@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
-  resources :comments
-  resources :articles # does everything below along with RoR convention
+  
+  resources :articles do
+    resources :comments
+  end
+
+# does everything below along with RoR convention
 #  get 'articles', to: 'articles#index'
 #  get 'articles/new', to: 'articles#new', as: 'new_article'
 #  post 'articles', to: 'articles#create'
