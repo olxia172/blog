@@ -1,4 +1,5 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
+  <%= render 'error_messages' %>
   <%= f.hidden_field :article_id %>
   <p>
     <%= f.label :commenter %>
