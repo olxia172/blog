@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
       @articles = Article.all.order(created_at: :desc).select do |article|
         article.tags.include?(params[:q])
       end
+      session[:q] = params[:q]
     else
       @articles = Article.all.order(created_at: :desc)
     end
