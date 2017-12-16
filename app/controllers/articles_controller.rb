@@ -3,9 +3,10 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:q].present?
-      @articles = Article.all.order(created_at: :desc).select do |article|
-        article.tags.include?(params[:q])
-      end
+      @articles = Article.where("? = any(tags)", params[:q])
+      #@articles = Article.all.order(created_at: :desc).select do |article|
+      #  article.tags.include?(params[:q])
+      #end
       session[:q] = params[:q]
     else
       @articles = Article.all.order(created_at: :desc)
