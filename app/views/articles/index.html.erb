@@ -4,6 +4,12 @@
   <div class="list-group-item">
     <h4 class="list-group-item-heading"><%= article.title %></h4>
     <p class="list-group-item-text"><%= article.text %></p>
+    <p class="list-group-item-text">
+      <strong>Tags:</strong>
+      <% article.tags.each do |tag| %>
+      <%= '#' + tag.to_s + ' '%>
+      <% end %>
+    </p>
     <div class="list-group-item-text">
       <%= link_to 'Show', article_path(article), class: "btn btn-default" %>
       <%= link_to 'Edit', edit_article_path(article), class: "btn btn-default"%>

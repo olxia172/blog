@@ -9,6 +9,14 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
+
+<p>
+  <strong>Tags:</strong>
+  <% @article.tags.each do |tag| %>
+  <%= '#' + tag.to_s + ' '%>
+  <% end %>
+</p>
+
 <%= link_to 'Back', articles_path %>
 
 <h1>Comments</h1>
