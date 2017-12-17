@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_article, only: [:edit, :update, :destroy]
 
   def index
     if params[:q].present?
@@ -7,7 +8,6 @@ class ArticlesController < ApplicationController
       #@articles = Article.all.order(created_at: :desc).select do |article|
       #  article.tags.include?(params[:q])
       #end
-      session[:q] = params[:q]
     else
       @articles = Article.all.order(created_at: :desc)
     end
@@ -56,5 +56,11 @@ class ArticlesController < ApplicationController
 
   def find_article
     @article = Article.find(params[:id])
+  end
+
+  def authorize_article
+    if @article.author != current_user
+      redirect_to articles_path
+    end
   end
 end
