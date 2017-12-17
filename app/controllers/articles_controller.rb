@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.author = current_user
     if @article.save
-      redirect_to article_path(@article)
+      redirect_to article_path(@article), notice: 'You succesfully created an article'
     else
       render 'new'
     end
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
 
   def authorize_article
     if @article.author != current_user
-      redirect_to articles_path
+      redirect_to articles_path, alert: 'You shall not pass!'
     end
   end
 end
