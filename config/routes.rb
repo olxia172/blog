@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
   root 'welcome#index'
-  
-  resources :articles do
-    resources :comments
+
+  resources :articles do # zagniezdzanie
+    resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
+
+
 
 # does everything below along with RoR convention
 #  get 'articles', to: 'articles#index'

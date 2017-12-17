@@ -19,7 +19,25 @@
   <% end %>
 </p>
 
-<%= link_to 'Back', articles_path %>
+
+<br>
+
+<% if @like.persisted? %>
+  <%= link_to 'Unlike', article_like_path(@article, @like),
+  method: :delete,
+  class: "btn btn-default" %>
+<% else %>
+  <%= form_for ([@article, @like]) do |f| %>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-default"%>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'Back', articles_path, class: "btn btn-default" %>
+
 
 <h1>Comments</h1>
 
