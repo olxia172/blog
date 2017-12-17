@@ -22,6 +22,8 @@
 
 <br>
 
+<p><%= pluralize(@article.likes.count, 'person') %> liked this article</p>
+
 <% if @like.persisted? %>
   <%= link_to 'Unlike', article_like_path(@article, @like),
   method: :delete,
@@ -33,8 +35,6 @@
     </div>
   <% end %>
 <% end %>
-
-<br>
 
 <%= link_to 'Back', articles_path, class: "btn btn-default" %>
 
