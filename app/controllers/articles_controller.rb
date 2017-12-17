@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(permitted_attributes(Article))
     @article.author = current_user
     if @article.save
       redirect_to article_path(@article), notice: 'You succesfully created an article'
@@ -30,8 +30,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.attributes = article_params
-    if @article.save
+    if @article.update(permitted_attributes(@article))
       redirect_to article_path(@article)
     else
       render 'edit'
@@ -45,17 +44,16 @@ class ArticlesController < ApplicationController
 
   private
 
-  def article_params
-    params.require(:article).permit(:title, :text, :tags)
-  end
+#  def article_params
+#    params.require(:article).permit(:title, :text, :tags)
+#  end
+# zastapione przez metode pundita permitted_attributes
 
   def find_article
     @article = Article.find(params[:id])
   end
 
   def authorize_article
-    if @article.author != current_user
-      redirect_to articles_path, alert: 'You shall not pass!'
-    end
+    authorize @article
   end
 end
