@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles, foreign_key: :author_id # wymuszamy zeby korzystalo z kolumny author_id
+  has_many :likes
 end
