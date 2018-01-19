@@ -55,6 +55,15 @@
 //   request.send();
 // })
 
+function showComments() {
+    var x = document.getElementById("all-comments");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 window.addEventListener("load", function() {
   var elements = document.querySelectorAll('.summary');
   for(var i = 0; i < elements.length; i++) {
