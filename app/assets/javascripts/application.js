@@ -15,3 +15,66 @@
 
 //= require jquery
 //= require bootstrap-sprockets
+
+// alert("Heloooooo!")
+
+// MODYFIKACJE FORMULARZA WYSZUKIWANIA
+// window.addEventListener("load", function() {
+//   document.getElementById("q").value = "form js";
+//
+//   document.getElementById("q").addEventListener('keypress', function() {
+//     console.log(this.value);
+//   });
+//
+//   document.getElementById("q").addEventListener('mouseover', function () {
+//     console.log('myszka nad formularzem')
+//   });
+// });
+//
+// PROSTY KALKULATOR
+// window.addEventListener('load', function () {
+//   document.getElementById('btncalc').addEventListener('click', function () {
+//     var num1 = parseInt(document.getElementById('num1').value);
+//     var num2 = parseInt(document.getElementById('num2').value);
+//     var result = num1 + num2;
+//     document.getElementById('result').innerHTML = result;
+//   });
+// });
+
+// AJAX
+// window.addEventListener('load', function () {
+//   var request = new XMLHttpRequest();
+//   request.open("GET", "http://localhost:3000/test.txt");
+//   request.responseType = 'json';
+//   request.addEventListener('load', function () {
+//     document.getElementById("q").value = this.response.message;
+//     var newElement = document.createElement('h1');
+//     newElement.innerText = this.response.var;
+//     document.body.appendChild(newElement);
+//   });
+//   request.send();
+// })
+
+window.addEventListener("load", function() {
+  var elements = document.querySelectorAll('.summary');
+  for(var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("click", function(e) {
+      e.preventDefault();
+      var request = new XMLHttpRequest();
+      request.open("GET", this.href + ".json");
+      request.responseType = 'json';
+      request.addEventListener('load', function () {
+        var summary = document.getElementById("summary-" + this.response.id);
+        summary.innerText = "Comments: " + this.response.comments + ". Likes: " + this.response.likes;
+      });
+      request.send();
+    })
+  }
+});
+
+var request = new XMLHttpRequest();
+request.open("GET", "http://localhost:3000/articles.json");
+request.responseType = 'json';
+request.addEventListener('load', function () {
+  console.log(this.response.length);
+})

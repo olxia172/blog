@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :articles do # zagniezdzanie
+    # akcja get dot konkretnego artykulu
+    member do
+      get :summary
+    end
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end

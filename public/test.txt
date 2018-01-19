@@ -1,0 +1,4 @@
+{
+  "message": "Example",
+  "var": "Hello from javascript"
+}

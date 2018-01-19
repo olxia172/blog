@@ -36,6 +36,7 @@
         data: { confirm: 'Are you sure?' } %>
       </button>
       <% end %>
+      <%= link_to 'Summary', summary_article_path(article), class: "btn btn-default summary", id: "summary-#{article.id}" %>
     </div>
   </div>
 
