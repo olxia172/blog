@@ -41,7 +41,7 @@
 
 <h1>Comments</h1>
 
-<a onclick="showComments('all-comments'); return false;">See all comments</a>
+<a onclick="showComments('all-comments')">See all comments</a>
 <div id="all-comments">
   <% @article.comments.each do |comment| %>
   <%= render comment %>

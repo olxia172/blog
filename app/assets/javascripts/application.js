@@ -64,6 +64,23 @@ function showComments() {
     }
 }
 
+function numberOfArticles () {
+  var sumOfArticles = document.getElementsByClassName('article').length;
+  var articlesSummary = document.getElementById('articles-summary');
+  articlesSummary.innerText = "Current number of articles is " + sumOfArticles;
+}
+
+// document.getElementsByClassName = $()
+
+$(document).ready(function(){
+  var sumOfArticles = $('.article').size();
+  $('#articles-summary').hide().text("Current number of articles is " + sumOfArticles).fadeIn();
+})
+
+window.addEventListener("load", function () {
+  //setTimeout(numberOfArticles, 1000);
+})
+
 window.addEventListener("load", function() {
   var elements = document.querySelectorAll('.summary');
   for(var i = 0; i < elements.length; i++) {
