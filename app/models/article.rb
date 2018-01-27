@@ -5,6 +5,8 @@ class Article < ApplicationRecord
   belongs_to :author, class_name: "User" # nie ma modelu autor, ale jest model user, dlatego bezpośrenio każemy, żeby autor odnosił się bęzpośrenio do modelu user
   validates :title, presence: true, length: { minimum: 5 }
 
+  mount_uploader :banner, BannerUploader
+
   def tags=(value)
     value = sanitize_tags(value) if value.is_a?(String)
     super(value)
