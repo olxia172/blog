@@ -8,6 +8,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:title, :text, :tags]
+    [:title, :text, :tags, :banner]
+    # %i[title text tags banner]
   end
 end
