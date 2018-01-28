@@ -48,6 +48,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem "letter_opener"
 end
 
 group :development do
