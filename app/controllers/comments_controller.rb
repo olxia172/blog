@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.attributes = comment_params
     if @comment.save
       session[:commenter] = @comment.commenter
-      UserMailer.article_commented(@article).deliver_now
+      UserMailer.article_commented(@article.id).deliver_now
       redirect_to article_path(@comment.article)
     else
       render 'articles/show'
